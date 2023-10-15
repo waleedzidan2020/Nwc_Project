@@ -1,0 +1,138 @@
+﻿@using NWCProject.Models
+
+@model SubscriptionEditViewModel
+@{
+    var sub = ViewData["CurrentSubscriber"] as NWC_Subscriber_File;
+
+
+}
+
+
+
+
+
+ <div class="container w-50 float-end ">
+    <form asp-action="Add" id="MyForm" asp-controller="Subscription" method="post">
+                <div class="form-group">
+                    <label class="m-2 float-end">رقم الهوية</label>
+            @if (sub != null)
+            {
+                <input id="idInput" asp-for="Id" value="@sub.Id" type="text" class="form-control">
+            }
+            
+            else{
+                <input id="idInput" asp-for="Id" type="text" class="form-control">
+
+            }
+
+                </div>
+@*                 <a id="updateLink" class="nav-link mt-1 text-white btn-primary w-25  text-center " asp-controller="Subscription" asp-action="Get" asp-route-id="">بحث</a>
+ *@                @if (sub != null)
+                {
+                    <div class="form-group">
+                        <label class=" m-1 float-end">الاسم</label>
+                        <input type="text" class="form-control" value="@sub.Name">
+                    </div>
+                    <div class="form-group">
+                        <label class=" m-1 float-end">المدينة</label>
+                        <input type="text" class="form-control" value="@sub.City">
+                    </div>
+                    <div class="form-group">
+                        <label class="m-1 float-end">الحي</label>
+                        <input type="text" class="form-control" value="@sub.Area">
+                    </div>
+                    <div class="form-group">
+                        <label class=" m-1 float-end">رقم الجوال</label>
+                        <input type="text" class="form-control" value="@sub.Mobile">
+                    </div>
+
+                }
+                else
+                {
+                    <div class="form-group">
+                        <label class=" m-1 float-end">الاسم</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class=" m-1 float-end">المدينة</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="m-1 float-end">الحي</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class=" m-1 float-end">رقم الجوال</label>
+                        <input type="text" class="form-control">
+                    </div>
+
+
+                }
+
+                <div class="form-group float-end">
+                    <label asp-for="NumberOfUnits" class=" m-2 float-end">عدد الوحدات</label>
+                    <input asp-for="NumberOfUnits" type="text" class="form-control">
+                </div>
+                <div class="form-group mb-2 mt-2">
+                    <label asp-for="lastReading" class=" m-2 float-end">اخر قراءة للعداد</label>
+                    <input asp-for="lastReading" type="text" class="form-control">
+                </div>
+                <div class="form-group mb-2 float-end">
+                    <label class="  float-end">نوع العقار</label>
+                    <div>
+                        <select class="form-select" asp-items="@ViewBag.Items" asp-for="UnitCode">
+                        </select>
+
+                    </div>
+
+                </div>
+                <select class="form-select" asp-items="@SubscriptionEditViewModel.TrueOfFlase" asp-for="Is_Sanitation">
+                </select>
+
+                <button type="submit" class="btn btn-primary m-2">حفظ</button>
+            </form>
+              </div>
+
+    <script>
+        const form = document.getElementById('MyForm');
+        const idInput = document.getElementById('idInput');
+        const updateLink = document.getElementById('updateLink');
+
+        // updateLink.addEventListener('click', function(e) {
+        //   // Prevent the default link behavior
+
+        //   const inputValue = idInput.value;
+        //   const linkUrl = updateLink.getAttribute('href');
+
+        //   const updatedUrl = linkUrl.concat(`?id=${inputValue}`)
+        //   updateLink.setAttribute('href', updatedUrl);
+
+        //   // Perform any additional actions or submit the form if needed
+        //   // For example: document.forms[0].submit();
+        // });
+
+    idInput.addEventListener('blur', function () {
+       
+        let xhr = new XMLHttpRequest();
+
+        // Making our connection
+        let url = `/Subscription/Get/${idInput.value}`;
+        xhr.open("GET", url, true);
+
+       // function execute after request is successful
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                
+            }
+        }
+        // Sending our request
+      
+        xhr.send();
+        location.reload();
+     
+    });
+   
+
+
+    </script>

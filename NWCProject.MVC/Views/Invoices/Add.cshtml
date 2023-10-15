@@ -1,0 +1,196 @@
+﻿@model InvoiceEditViewModel
+@{
+
+    var viewModel = ViewData["ViewModel"] as InvoiceViewModel;
+
+
+
+}
+@*<div class="container w-50 float-end ">*@
+    <form asp-action="Add" asp-controller="Invoices" method="post">
+
+
+        @if (Model != null && viewModel != null)
+        {
+            @if (Model.IsCalculated)
+            {
+                <div class="form-group ">
+                    <label class=" m-1 float-end">رقم الفاتورة</label>
+                    <input type="text" readonly asp-for="Invoice_Number" value="@Model.Invoice_Number" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-2 float-end">هوية المشترك</label>
+                    <input type="text" readonly asp-for="Subscriber_Code" value="@viewModel.Subscriber_Code" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-2 float-end">الاسم</label>
+                    <input type="text" readonly asp-for="SubscriberName" value="@viewModel.SubscriberName" class="form-control">
+                </div>
+
+                <div class="form-group ">
+                    <label class=" m-2 float-end">القراءة السابقة</label>
+                    <input type="text" readonly asp-for="Previous_Consumption_Amount" value="@viewModel.Previous_Consumption_Amount" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-2 float-end">هل يوجد صرف صحي </label>
+                    <input type="text" readonly asp-for="Is_There_Sanitaion" value="@viewModel.Is_There_Sanitaion.ToString()" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class=" m-2 float-end">الي تاريخ</label>
+                    <input type="datetime" readonly asp-for="Invoices_To" value="@viewModel.Invoices_To" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-2 float-end">عدد الوحدات </label>
+                    <input type="text" readonly asp-for="Units_Number" value="@viewModel.Units_Number" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-2 float-end">كمية الاستهلاك </label>
+                    <input type="text" readonly asp-for="Amount_Consumption" value="@viewModel.Amount_Consumption" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class="m-1 float-end">قيمة استهلاك المياه </label>
+                    <input type="text" readonly asp-for="Water_Consumption_Value" value="@viewModel.Water_Consumption_Value" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-1 float-end">قيمة استهلاك الصرف الصحي  </label>
+                    <input type="text" readonly asp-for="Wastewater_Consumption_Value" value="@viewModel.Wastewater_Consumption_Value" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-1 float-end">قيمة الفاتورة </label>
+                    <input type="text" readonly asp-for="Total_Invoice" value="@viewModel.Total_Invoice" class="form-control">
+                </div>
+                <div class="form-group ">
+                    <label class=" m-1 float-end"> اجمالي الفاتورة</label>
+                    <input type="text" readonly asp-for="Total_Bill" value="@viewModel.Total_Bill" class="form-control">
+                </div>
+
+                <input hidden type="text" asp-for="Tax_Value" value="@viewModel.Tax_Value" class="form-control">
+                <input hidden type="text" asp-for="IsCalculated" value="@viewModel.IsCalculated" class="form-control">
+                <input hidden type="text" asp-for="Estate_Types_Code" value="@viewModel.Estate_Types_Code" class="form-control">
+
+
+
+
+
+
+            }
+        }
+        else
+        {
+            <div class="form-group ">
+                <label class=" m-2 float-end">هوية المشترك</label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">الاسم</label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">القراءة السابقة</label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">هل يوجد صرف صحي </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group">
+                <label class=" m-2 float-end">الي تاريخ</label>
+                <input type="datetime" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">عدد الوحدات </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">كمية الاستهلاك </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class="m-1 float-end">قيمة استهلاك المياه </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-1 float-end">قيمة استهلاك الصرف الصحي  </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-1 float-end">قيمة الفاتورة </label>
+                <input type="text" readonly class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-1 float-end"> اجمالي الفاتورة</label>
+                <input type="text" readonly class="form-control">
+            </div>
+        }
+
+
+        @*-----------------------------------------Inputs--------------------------------------------------*@
+
+
+        <form asp-action="Add" asp-controller="Invoices" method="post">
+            <div class="form-group ">
+                <label class=" m-1 float-end">رقم الاشتراك</label>
+                <input type="text" asp-for="Subscription_No" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class=" m-1 float-end">تاريخ الفاتورة</label>
+                <input type="date" asp-for="Invoices_Date" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class=" m-2 float-end">القراءة الحالية </label>
+                <input type="text" asp-for="Current_Consumption_Amount" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class=" m-2 float-end">من تاريخ</label>
+                <input type="date" asp-for="Invoices_From" class="form-control">
+            </div>
+
+
+            <div class="form-group ">
+                <label class=" m-2 float-end">قيمة رسوم الخدمة</label>
+                <input type="text" asp-for="Service_Fee" class="form-control">
+            </div>
+            <div class="form-group ">
+                <label class=" m-2 float-end">نسبة الضريبية</label>
+                <input type="text" asp-for="Tax_Rate" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary m-5">حساب</button>
+
+        </form>
+     
+
+        <button type="submit" class="btn btn-primary m-5">حفظ</button>
+
+    </form>
+
+
+
+@*<script>
+
+    const Anchor1=document.getElementById("updateLink");
+    const ContaainerInputs = document.getElementById("Inputs");
+    const inputs=ContaainerInputs.getElementsByTagName("input");
+    let myMap = new Map();
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var updateLink = document.getElementById("updateLink");
+    updateLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    for(let i =0; i < inputs.length;i++){
+    console.log(inputs[i].value)
+
+    }
+
+    });
+    });
+
+
+    function setMapInCookies() {
+    var cookieValue = JSON.stringify([...myMap]); // Convert the map to an array and stringify it
+    document.cookie = "myMap=" + encodeURIComponent(cookieValue);
+    }
+
+    </script>*@

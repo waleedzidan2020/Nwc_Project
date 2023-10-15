@@ -1,0 +1,30 @@
+﻿@model List<SubsciberViewModel>
+
+
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">رقم الهوية</th>
+      <th scope="col">الاسم </th>
+      <th scope="col">المدينة</th>
+      <th scope="col">الحي </th>
+      <th scope="col">رقم الجوال</th>
+      <th scope="col">عدد الاشتراكات</th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach(var item in Model){
+    <tr>
+     
+      <td>@item.Id</td>
+      <td>@item.Name</td>
+      <td>@item.City</td>
+       <td>@item.Area</td>
+        <td>@item.Mobile</td>
+         <td>@item.NumberOfSubscription</td>
+    </tr>
+}
+  
+  </tbody>
+</table>

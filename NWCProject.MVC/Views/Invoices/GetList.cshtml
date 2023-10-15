@@ -1,0 +1,52 @@
+﻿@model List<InvoiceViewModel>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">رقم الفاتورة</th>
+                <th scope="col">رقم الاشتراك</th>
+                <th scope="col">رقم المشترك</th>
+                <th scope="col">الاسم </th>
+                <th scope="col">تاريخ الفاتورة </th>
+                <th scope="col">الاستهلاك السابق</th>
+                <th scope="col">الاستهلاك الحالي </th>
+                <th scope="col">كمية الاستهلاك </th>
+                <th scope="col">مجموع الفاتورة </th>
+                <th scope="col">اجمالي الفاتورة </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Invoice_Number</td>
+                    <td>@item.Subscription_No</td>
+                    <td>@item.Subscriber_Code</td>
+                    <td>@item.SubscriberName</td>
+                    <td>@item.Invoices_Date</td>
+                    <td>@item.Previous_Consumption_Amount</td>
+                    <td>@item.Current_Consumption_Amount</td>
+                    <td>@item.Amount_Consumption</td>
+                    <td>@item.Total_Invoice</td>
+                    <td>@item.Total_Bill</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+else
+{
+
+
+    <div class="alert alert-danger" role="alert">
+        لا يوجد فواتير
+    </div>
+
+
+}

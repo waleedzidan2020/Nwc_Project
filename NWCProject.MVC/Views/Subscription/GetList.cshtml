@@ -1,0 +1,43 @@
+﻿@model List<SubscriptionViewModel>
+
+@if(Model !=null){
+     <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">رقم الاشتراك</th>
+       <th scope="col">رقم المشترك</th>
+      <th scope="col">الاسم </th>
+     
+      <th scope="col">رقم الجوال</th>
+       <th scope="col">نوع العقار</th>
+      <th scope="col">عدد الوحدات </th>
+      <th scope="col">هل يوجد صرف صحي </th>
+        <th scope="col">اخر قراءة للعداد </th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach(var item in Model){
+    <tr>
+     
+      <td>@item.Subscription_File_No</td>
+      <td>@item.SubscriberId</td>
+      <td>@item.Name</td>
+       <td>@item.Mobile</td>
+        <td>@item.Name_Estate</td>
+         <td>@item.Unit_Number</td>
+         <td>@item.Is_There_Sanitaion</td>
+            <td>@item.Last_Reading_Meter</td>
+    </tr>
+}
+  
+  </tbody>
+</table>
+}else{
+
+
+<div class="alert alert-danger" role="alert">
+    لا يوجد اشتراكات 
+</div>
+
+
+}

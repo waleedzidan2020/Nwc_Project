@@ -1,0 +1,28 @@
+﻿@model EstateTypeEditViewModel
+@{
+
+    ViewBag.title = "AddEstate";
+
+}
+     
+
+ <div class="container w-50 float-end ">
+
+<form asp-action="Add" asp-controller="EstateTypes" method="post">
+  <div class="form-group ">
+    <label class=" m-2 float-end" asp-for="Code">رمز العقار</label>
+    <input type="text" class="form-control" asp-for="Code" >
+  </div>
+   <div class="form-group">
+    <label class=" m-2 float-end" asp-for="Name">وصف العقار</label>
+    <input type="text" class="form-control" asp-for="Name" >
+  </div>
+   
+ 
+  <button  type="submit" class="btn btn-primary m-5">حفظ</button>
+</form>
+  </div>
+
+
+
+
